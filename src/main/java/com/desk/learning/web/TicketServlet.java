@@ -107,6 +107,7 @@ public class TicketServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			out.write(jsonString);
 		} catch (JSONException e) {
+			JSONObject id = json.put("ok",200);
 			System.out.println(e);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
@@ -214,7 +215,6 @@ public class TicketServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doOptions(request, response);
-
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Access-Control-Allow-Methods", "GET, POST");
 		response.setHeader("Access-Control-Allow-Headers", "Content-Type");
