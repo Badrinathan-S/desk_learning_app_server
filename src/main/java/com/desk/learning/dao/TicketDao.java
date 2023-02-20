@@ -16,6 +16,7 @@ public class TicketDao {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "";
 	private String jdbcDriver = "com.mysql.jdbc.Driver";
+	private TicketDao dao;
 
 	private static final String INSERT_TICKET_SQL = "INSERT INTO dl_tickets"
 			+ " (ticket_id, name, priority, medium, email, phone	) VALUE" + " (?, ?, ?, ?, ?, ?);";
@@ -23,6 +24,14 @@ public class TicketDao {
 	private static final String UPDATE_TICKET_SQL = "UPDATE dl_tickets set name=?, priority=?, medium=?, email=?, phone=? where ticket_id=? and id=?;";
 	private static final String LIST_TICKET_SQL = "SELECT * FROM dl_tickets";
 	private static final String SELECT_TICKEY_BY_PRIMARYID = "SELECT * FROM dl_tickets WHERE id=?;";
+	
+	public TicketDao(TicketDao dao) {
+		this.dao = dao;
+	}
+	
+	public TicketDao() {
+
+	}
 
 	protected Connection getConnection() {
 		Connection connection = null;
