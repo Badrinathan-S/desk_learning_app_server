@@ -38,9 +38,16 @@ class TicketDaoTesting {
 		String email = "badri@gmail.com";
 		Long phone = (long) 987654321;
 		TicketModel t1 = new TicketModel(ticket_id, name, priority, medium, email, phone);
-		boolean t2 = ticketDao.insertUser(t1);
 		when(ticketDao.insertUser(t1)).thenReturn(true);
-		assertEquals(true, ticketDao.insertUser(t1));
+		boolean result = ticketDao.insertUser(t1);
+		assertEquals(true, result);
+	}
+	
+	@Test
+	public void testGetTickets() {
+		TicketDao act = new TicketDao();
+		assertEquals(0, ticketDao.getTickets().size());
+		
 	}
 
 }
